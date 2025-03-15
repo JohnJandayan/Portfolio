@@ -1,114 +1,122 @@
 "use client";
 
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Portfolio } from "@/lib/github";
-import Link from "next/link";
-import { useState, useEffect } from "react";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import Image from "next/image";
 
-interface PortfolioCardProps {
-  project: Portfolio;
-  delay: number;
-  visible: boolean;
-}
-
-export function PortfolioCard({ project, delay, visible }: PortfolioCardProps) {
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [imageUrl, setImageUrl] = useState("/portfolio-placeholder.jpg");
-
-  // Try to load a project-specific image
-  useEffect(() => {
-    const img = new Image();
-    img.src = `/portfolio/${project.name.toLowerCase().replace(/\s+/g, '-')}.jpg`;
-    img.onload = () => {
-      setImageUrl(img.src);
-      setImageLoaded(true);
-    };
-    // Use placeholder image if specific image fails to load
-    img.onerror = () => {
-      setImageLoaded(true);
-    };
-  }, [project.name]);
-
-  // Format date
-  const formattedDate = new Date(project.updatedAt).toLocaleDateString('en-US', {
+export function PortfolioCard({ project }: { project: Portfolio }) {
+  // Format the date to a more readable format
+  const updatedDate = new Date(project.updatedAt).toLocaleDateString('en-US', {
     year: 'numeric',
-    month: 'short'
+    month: 'short',
+    day: 'numeric'
   });
-
+  
   return (
-    <div className={`rounded-lg border bg-card text-card-foreground shadow transition-all hover:border-primary hover:shadow-md ${visible ? `animate-slide-up delay-${delay}` : 'opacity-0'}`}>
-      <div className="h-48 bg-muted rounded-t-lg relative overflow-hidden">
-        {imageLoaded ? (
-          <div 
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-500 hover:scale-110"
-            style={{ backgroundImage: `url(${imageUrl})` }}
-          />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-            Loading...
-          </div>
-        )}
-        {project.language && (
-          <div className="absolute top-4 right-4 bg-background/90 px-2 py-1 text-xs font-medium rounded-md border border-border">
-            {project.language}
-          </div>
-        )}
-        <div className="absolute inset-0 flex items-center justify-center text-muted-foreground bg-gradient-to-br from-background/40 to-background/80">
-          <div className="text-center p-4">
-            <h3 className="text-xl font-bold text-primary mb-2">{project.name}</h3>
-            <p className="text-sm opacity-80">Created: {formattedDate}</p>
-          </div>
+    <Card className="flex flex-col h-full border border-muted bg-background shadow-sm hover:shadow-md transition-all cursor-glow">
+      <CardHeader className="pb-2">
+        <div className="flex items-center justify-between mb-1">
+          <h3 className="text-xl font-semibold">{project.name}</h3>
+          
+          {project.language && (
+            <span className="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary">
+              {project.language}
+            </span>
+          )}
         </div>
-      </div>
-      
-      <div className="p-6 space-y-2">
-        <p className="text-sm text-muted-foreground line-clamp-2">{project.description}</p>
         
-        {/* Topics/Tags */}
-        {project.topics.length > 0 && (
-          <div className="flex flex-wrap gap-1 pt-3">
+        {/* Organization info */}
+        {project.isOrg && (
+          <div className="flex items-center space-x-2 text-xs text-muted-foreground">
+            <Image 
+              src={project.ownerAvatar} 
+              alt={project.owner} 
+              width={16} 
+              height={16} 
+              className="rounded-full" 
+            />
+            <a 
+              href={project.ownerUrl} 
+              target="_blank" 
+              rel="noreferrer" 
+              className="hover:text-primary transition-colors"
+            >
+              {project.owner}
+            </a>
+          </div>
+        )}
+      </CardHeader>
+      
+      <CardContent className="py-2 flex-grow">
+        <p className="text-sm text-muted-foreground">{project.description}</p>
+        
+        {project.topics && project.topics.length > 0 && (
+          <div className="flex flex-wrap gap-1 mt-3">
             {project.topics.slice(0, 3).map((topic) => (
               <span 
                 key={topic} 
-                className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full"
+                className="text-xs font-medium px-2 py-1 rounded-full bg-muted text-muted-foreground"
               >
                 {topic}
               </span>
             ))}
             {project.topics.length > 3 && (
-              <span className="text-xs bg-muted px-2 py-1 rounded-full">+{project.topics.length - 3}</span>
+              <span className="text-xs font-medium px-2 py-1 rounded-full bg-muted text-muted-foreground">
+                +{project.topics.length - 3}
+              </span>
             )}
           </div>
         )}
-        
-        <div className="pt-4 flex justify-between">
-          {project.demoUrl ? (
-            <Button 
-              variant="outline" 
-              size="sm" 
-              asChild
-              className="hover:border-primary transition-all transform hover:scale-105 hover:glow-on-hover"
-            >
-              <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                Demo
-              </Link>
-            </Button>
-          ) : (
-            <div></div>
-          )}
-          
+      </CardContent>
+      
+      <CardFooter className="pt-2 flex flex-col gap-2">
+        <div className="flex justify-between items-center w-full text-xs text-muted-foreground">
+          <div className="flex items-center gap-3">
+            {project.stars > 0 && (
+              <span className="flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                {project.stars}
+              </span>
+            )}
+            {project.forks > 0 && (
+              <span className="flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9"/><path d="M12 12v6"/></svg>
+                {project.forks}
+              </span>
+            )}
+          </div>
+          <span>Updated {updatedDate}</span>
+        </div>
+        <div className="flex gap-2 w-full mt-2">
           <Button 
+            asChild 
             variant="outline" 
             size="sm" 
-            asChild
-            className="hover:border-primary transition-all transform hover:scale-105 hover:glow-on-hover"
+            className="flex-1 hover:border-primary"
           >
-            <Link href={project.url} target="_blank" rel="noopener noreferrer">
+            <a href={project.url} target="_blank" rel="noreferrer">
+              <FaGithub className="mr-1" /> 
               Code
-            </Link>
+            </a>
           </Button>
+          
+          {project.demoUrl && (
+            <Button 
+              asChild 
+              variant="default" 
+              size="sm" 
+              className="flex-1"
+            >
+              <a href={project.demoUrl} target="_blank" rel="noreferrer">
+                <FaExternalLinkAlt className="mr-1" /> 
+                Demo
+              </a>
+            </Button>
+          )}
         </div>
-      </div>
-    </div>
+      </CardFooter>
+    </Card>
   );
 }

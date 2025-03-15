@@ -320,12 +320,12 @@ export default function Home() {
           ) : projects.length > 0 ? (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {projects.map((project, index) => (
-                <PortfolioCard 
+                <div 
                   key={project.id}
-                  project={project}
-                  delay={(index + 1) * 100}
-                  visible={portfolioVisible} // Changed from isVisible to visible
-                />
+                  className={`${portfolioVisible ? `animate-slide-up delay-${(index % 5 + 1) * 100}` : 'opacity-0'}`}
+                >
+                  <PortfolioCard project={project} />
+                </div>
               ))}
             </div>
           ) : (
