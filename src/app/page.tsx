@@ -237,9 +237,9 @@ export default function Home() {
               With a keen eye for design and a commitment to writing clean, efficient code, I desire to create and amplify memorable user experiences.
             </p>
             
-            {/* Modern About Section with Education & Experience */}
+            {/* Modern About Section with Education, Experience, Certifications & Achievements */}
             <div className="mt-12 w-full">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {/* Education Column */}
                 <div className={`${aboutVisible ? 'animate-slide-in-right delay-100' : 'opacity-0'}`}>
                   <div className="flex flex-col h-full">
@@ -257,19 +257,12 @@ export default function Home() {
                         <p className="text-sm text-muted-foreground">Caraga State University, 2023-Ongoing</p>
                         <p className="mt-2">Potential Specialization in Machine Learning. Aspiring Graduate.</p>
                       </div>
-                      
-                      <div className="relative">
-                        <div className="absolute -left-[31px] mt-1.5 h-4 w-4 rounded-full border-2 border-primary bg-background"></div>
-                        <h4 className="text-xl font-semibold">IBM AI Developer Certification</h4>
-                        <p className="text-sm text-muted-foreground">IBM | Coursera, 2024</p>
-                        <p className="mt-2">A course focusing on AI technologies, generative AI models, and programming to build AI-powered chatbots and apps.</p>
-                      </div>
                     </div>
                   </div>
                 </div>
                 
                 {/* Experience Column */}
-                <div className={`${aboutVisible ? 'animate-slide-in-right delay-300' : 'opacity-0'}`}>
+                <div className={`${aboutVisible ? 'animate-slide-in-right delay-200' : 'opacity-0'}`}>
                   <div className="flex flex-col h-full">
                     <div className="flex items-center mb-4">
                       <div className="p-2 rounded-full bg-primary/20 mr-4">
@@ -291,6 +284,48 @@ export default function Home() {
                         <h4 className="text-xl font-semibold">Curatorial Intern</h4>
                         <p className="text-sm text-muted-foreground">National Museum of the Philippines (Butuan City), 2020-2021</p>
                         <p className="mt-2">Monitoring and encoding various data, designing tarpulins and signages.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Certifications Column */}
+                <div className={`${aboutVisible ? 'animate-slide-in-right delay-300' : 'opacity-0'}`}>
+                  <div className="flex flex-col h-full">
+                    <div className="flex items-center mb-4">
+                      <div className="p-2 rounded-full bg-primary/20 mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                      </div>
+                      <h3 className="text-2xl font-bold">Certifications</h3>
+                    </div>
+                    
+                    <div className="border-l-2 border-primary/30 pl-6 space-y-8 py-2 flex-1">
+                      <div className="relative">
+                        <div className="absolute -left-[31px] mt-1.5 h-4 w-4 rounded-full border-2 border-primary bg-background"></div>
+                        <h4 className="text-xl font-semibold">IBM AI Developer Certification</h4>
+                        <p className="text-sm text-muted-foreground">IBM | Coursera, 2024</p>
+                        <p className="mt-2">A course focusing on AI technologies, generative AI models, and programming to build AI-powered chatbots and apps.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Achievements Column */}
+                <div className={`${aboutVisible ? 'animate-slide-in-right delay-400' : 'opacity-0'}`}>
+                  <div className="flex flex-col h-full">
+                    <div className="flex items-center mb-4">
+                      <div className="p-2 rounded-full bg-primary/20 mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                      </div>
+                      <h3 className="text-2xl font-bold">Achievements</h3>
+                    </div>
+                    
+                    <div className="border-l-2 border-primary/30 pl-6 space-y-8 py-2 flex-1">
+                      <div className="relative">
+                        <div className="absolute -left-[31px] mt-1.5 h-4 w-4 rounded-full border-2 border-primary bg-background"></div>
+                        <h4 className="text-xl font-semibold">Computer Science Society President</h4>
+                        <p className="text-sm text-muted-foreground">Caraga State University, 2025-Present</p>
+                        <p className="mt-2">Leading the university's Computer Science Society, organizing academic events and fostering collaboration among students.</p>
                       </div>
                     </div>
                   </div>
