@@ -323,7 +323,7 @@ export default function Home() {
                     <div className="border-l-2 border-primary/30 pl-6 space-y-8 py-2 flex-1">
                       <div className="relative">
                         <div className="absolute -left-[31px] mt-1.5 h-4 w-4 rounded-full border-2 border-primary bg-background"></div>
-                        <h4 className="text-xl font-semibold">Computer Science Society President</h4>
+                        <h4 className="text-xl font-semibold">CSU-CSS President</h4>
                         <p className="text-sm text-muted-foreground">Caraga State University, 2025-Present</p>
                         <p className="mt-2">Leading the university's Computer Science Society, organizing academic events and fostering collaboration among students.</p>
                       </div>
