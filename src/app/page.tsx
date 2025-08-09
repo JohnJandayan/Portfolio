@@ -2,8 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { FaPython, FaReact } from "react-icons/fa";
-import { SiDjango, SiPostgresql, SiC } from "react-icons/si";
+import { FaPython, FaReact, FaDocker } from "react-icons/fa";
+import { SiDjango, SiPostgresql, SiC, SiNeo4J, SiNextdotjs, SiPandas } from "react-icons/si";
+import { RiAiGenerate, RiRobot2Line } from "react-icons/ri";
+import { TbApi, TbBrain } from "react-icons/tb";
 import Image from "next/image";
 import useIntersectionObserver from "@/hooks/use-intersection-observer";
 import { useEffect, useState } from "react";
@@ -377,7 +379,7 @@ export default function Home() {
               Technologies I&#39;ve been working with recently
             </p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 justify-items-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-8 justify-items-center">
             {/* Python */}
             <div className={`flex flex-col items-center gap-2 transition-transform hover:scale-110 ${skillsVisible ? 'animate-slide-up delay-100' : 'opacity-0'}`}>
               <div className="rounded-full bg-muted border border-primary p-4 shadow-sm hover:shadow-md transition-all cursor-glow">
@@ -416,6 +418,70 @@ export default function Home() {
                 <SiDjango className="text-primary w-6 h-6" />
               </div>
               <span className="text-sm font-medium">Django</span>
+            </div>
+
+            {/* ML/AI */}
+            <div className={`flex flex-col items-center gap-2 transition-transform hover:scale-110 ${skillsVisible ? 'animate-slide-up delay-600' : 'opacity-0'}`}>
+              <div className="rounded-full bg-muted border border-primary p-4 shadow-sm hover:shadow-md transition-all cursor-glow">
+                <TbBrain className="text-primary w-6 h-6" />
+              </div>
+              <span className="text-sm font-medium">ML/AI</span>
+            </div>
+
+            {/* Neo4j */}
+            <div className={`flex flex-col items-center gap-2 transition-transform hover:scale-110 ${skillsVisible ? 'animate-slide-up delay-700' : 'opacity-0'}`}>
+              <div className="rounded-full bg-muted border border-primary p-4 shadow-sm hover:shadow-md transition-all cursor-glow">
+                <SiNeo4J className="text-primary w-6 h-6" />
+              </div>
+              <span className="text-sm font-medium">Neo4j</span>
+            </div>
+
+            {/* Next.js */}
+            <div className={`flex flex-col items-center gap-2 transition-transform hover:scale-110 ${skillsVisible ? 'animate-slide-up delay-800' : 'opacity-0'}`}>
+              <div className="rounded-full bg-muted border border-primary p-4 shadow-sm hover:shadow-md transition-all cursor-glow">
+                <SiNextdotjs className="text-primary w-6 h-6" />
+              </div>
+              <span className="text-sm font-medium">Next.js</span>
+            </div>
+
+            {/* Docker */}
+            <div className={`flex flex-col items-center gap-2 transition-transform hover:scale-110 ${skillsVisible ? 'animate-slide-up delay-900' : 'opacity-0'}`}>
+              <div className="rounded-full bg-muted border border-primary p-4 shadow-sm hover:shadow-md transition-all cursor-glow">
+                <FaDocker className="text-primary w-6 h-6" />
+              </div>
+              <span className="text-sm font-medium">Docker</span>
+            </div>
+
+            {/* GenAI */}
+            <div className={`flex flex-col items-center gap-2 transition-transform hover:scale-110 ${skillsVisible ? 'animate-slide-up delay-1000' : 'opacity-0'}`}>
+              <div className="rounded-full bg-muted border border-primary p-4 shadow-sm hover:shadow-md transition-all cursor-glow">
+                <RiAiGenerate className="text-primary w-6 h-6" />
+              </div>
+              <span className="text-sm font-medium">GenAI</span>
+            </div>
+
+            {/* REST APIs */}
+            <div className={`flex flex-col items-center gap-2 transition-transform hover:scale-110 ${skillsVisible ? 'animate-slide-up delay-1100' : 'opacity-0'}`}>
+              <div className="rounded-full bg-muted border border-primary p-4 shadow-sm hover:shadow-md transition-all cursor-glow">
+                <TbApi className="text-primary w-6 h-6" />
+              </div>
+              <span className="text-sm font-medium">REST APIs</span>
+            </div>
+
+            {/* Pandas */}
+            <div className={`flex flex-col items-center gap-2 transition-transform hover:scale-110 ${skillsVisible ? 'animate-slide-up delay-1200' : 'opacity-0'}`}>
+              <div className="rounded-full bg-muted border border-primary p-4 shadow-sm hover:shadow-md transition-all cursor-glow">
+                <SiPandas className="text-primary w-6 h-6" />
+              </div>
+              <span className="text-sm font-medium">Pandas</span>
+            </div>
+
+            {/* NLP */}
+            <div className={`flex flex-col items-center gap-2 transition-transform hover:scale-110 ${skillsVisible ? 'animate-slide-up delay-1300' : 'opacity-0'}`}>
+              <div className="rounded-full bg-muted border border-primary p-4 shadow-sm hover:shadow-md transition-all cursor-glow">
+                <RiRobot2Line className="text-primary w-6 h-6" />
+              </div>
+              <span className="text-sm font-medium">NLP</span>
             </div>
           </div>
         </section>
