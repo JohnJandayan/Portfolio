@@ -239,7 +239,7 @@ export default function Home() {
             
             {/* Modern About Section with Education, Experience, Certifications & Achievements */}
             <div className="mt-12 w-full">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Education Column */}
                 <div className={`${aboutVisible ? 'animate-slide-in-right delay-100' : 'opacity-0'}`}>
                   <div className="flex flex-col h-full">
