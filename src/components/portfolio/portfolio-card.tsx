@@ -29,12 +29,12 @@ export function PortfolioCard({ project }: { project: Portfolio }) {
         
         {/* Organization info */}
         {project.isOrg && (
-          <div className="flex items-center space-x-2 text-xs text-muted-foreground">
+          <div className="flex items-center space-x-3 text-sm text-muted-foreground">
             <Image 
               src={project.ownerAvatar} 
               alt={project.owner} 
-              width={16} 
-              height={16} 
+              width={24} 
+              height={24} 
               className="rounded-full" 
             />
             <a 
